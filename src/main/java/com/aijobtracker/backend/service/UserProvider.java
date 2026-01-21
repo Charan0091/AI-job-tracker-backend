@@ -1,5 +1,6 @@
 package com.aijobtracker.backend.service;
 
+import com.aijobtracker.backend.exception.ResourceNotFoundException;
 import com.aijobtracker.backend.model.User;
 import com.aijobtracker.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,6 @@ public class UserProvider {
 
     public User getDefaultUser() {
         return userRepository.findByEmail("charan@test.com")
-                .orElseThrow(() -> new RuntimeException("Test user not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Test user not found"));
     }
 }
